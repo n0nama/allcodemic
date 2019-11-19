@@ -1,0 +1,37 @@
+#EditorTabs{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 20px;
+    background-color: chocolate;
+}
+
+#Editor{
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+}
+
+#HorizontalLine{
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: gold;
+    cursor: row-resize;
+    flex-shrink: 0;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */
+}
+
+#TerminalWrapper{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: darkslategrey;
+}

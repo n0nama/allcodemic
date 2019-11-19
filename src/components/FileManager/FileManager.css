@@ -1,0 +1,50 @@
+#FileManager{
+    position: relative;
+    min-width: 100px;
+    height: 100vh;
+    background-color: #8e8e8c2b;
+    float: left;
+    clear: both;
+    padding-left: 15px;
+}
+
+#VerticalLine{
+    height: 100vh;
+    width: 2px;
+    background-color: cornflowerblue;
+    cursor: col-resize;
+    flex-shrink: 0;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */
+}
+
+#EditorWrapper{
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: cadetblue;
+}
+
+.item-caret, .item-base {
+  display: inline-block;
+}
+
+.item-caret i {
+  margin: 0!important;
+}
+
+.tree-item .tree-item{
+  margin-left: 15px;
+}
+#tree .accordion .content{
+  margin-left: 15px;
+}
+#tree .accordion .content, #tree .accordion .title{
+  padding: 0;
+}
+#tree .accordion .accordion, #tree .accordion .dropdown{
+  margin: 0;
+}
