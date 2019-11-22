@@ -1,0 +1,81 @@
+[
+    {
+    "type": "folder",
+    "text": "base",
+    "active" : true,
+    "children": [
+        {
+            "type": "file",
+            "text": "test.py"
+        },
+        {
+            "type":     "folder",
+            "text":     "env",
+            "active" : true,
+            "children": [
+                {
+                    "type": "file",
+                    "text": "bin.bash"
+                },
+                {
+                    "type": "file",
+                    "text": "python.script"
+                },
+                {
+                    "type": "file",
+                    "text": "temp.log"
+                }
+            ]
+        },
+        {
+            "type": "folder",
+            "text": "Poems",
+            "active" : false
+        },
+        {
+            "type": "folder",
+            "text": "Essays",
+            "active" : false,
+            "children": [
+                {
+                    "type": "file",
+                    "text": "The Fantastic Imagination"
+                },
+                {
+                    "type": "file",
+                    "text": "The New Name"
+                }
+            ]
+        },
+        {
+            "type": "file",
+            "text": "Our Community"
+        },
+        {
+            "type": "folder",
+            "text": "About us",
+            "active" : false,
+            "children": [
+                {
+                    "type": "folder",
+                    "text": "Community sponsorship",
+                   "children": [
+                        {
+                            "type": "file",
+                            "text": "Our Patreon"
+                        },
+                        {
+                            "type": "file",
+                            "text": "Endowments"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+},
+{
+    "type": "file",
+    "text": "Forum"
+}
+]

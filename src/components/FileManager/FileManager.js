@@ -1,89 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import './FileManager.css';
 
+import { connect } from 'react-redux';
+//import { bindActionCreators } from 'redux';
+
 import Tree from './TreeComponent';
 import Editor from '../Editor/Editor';
-
-const menu = [{
-    type: 'folder',
-    text: 'base',
-    active : true,
-    children: [
-        {
-            type: 'file',
-            text: 'test.py',
-        },
-        {
-            type:     'folder',
-            text:     'env',
-            active : true,
-            children: [
-                {
-                    type: 'file',
-                    text: 'bin.bash',
-                },
-                {
-                    type: 'file',
-                    text: 'python.script',
-                },
-                {
-                    type: 'file',
-                    text: 'temp.log',
-                },
-            ]
-        },
-        {
-            type: 'folder',
-            text: 'Poems',
-            active : false,
-        },
-        {
-            type: 'folder',
-            text: 'Essays',
-            active : false,
-            children: [
-                {
-                    type: 'file',
-                    text: 'The Fantastic Imagination',
-                },
-                {
-                    type: 'file',
-                    text: 'The New Name',
-                },
-            ]
-        },
-        {
-            type: 'file',
-            text: 'Our Community',
-        },
-        {
-            type: 'folder',
-            text: 'About us',
-            active : false,
-            children: [
-                {
-                    type: 'folder',
-                    text: 'Community sponsorship',
-                    children: [
-                        {
-                            type: 'file',
-                            text: 'Our Patreon',
-                        },
-                        {
-                            type: 'file',
-                            text: 'Endowments',
-                        },
-                    ]
-                },
-            ]
-        },
-    ]
-},
-{
-    type: 'file',
-    text: 'Forum',
-},
-];
 
 class FileManager extends Component {
     state = {
@@ -110,12 +32,13 @@ class FileManager extends Component {
         }
     }
     render(){
+        console.log(this.props)
         return (
             <Fragment>
             <div id="FileManager"
                 style={{width : this.state.width.toString() + 'px'}}
                 onMouseMove={this.state.isDragging ? (e)=>this.onMouseMove(e) : null}>
-                <Tree data={menu}/>
+                <Tree data={this.props.tree}/>
             </div>
             <div id="VerticalLine" style={{marginLeft : this.state.width.toString() + 'px'}} onMouseDown={(e) => this.startResize(e)} onMouseUp={(e) => this.stopResize(e)}></div>
             <div id="EditorWrapper" style={{left : (this.state.width + 2).toString() + 'px'}} onMouseMove={this.state.isDragging ? (e)=>this.onMouseMove(e) : null}>
@@ -126,4 +49,15 @@ class FileManager extends Component {
     }
 }
 
-export default FileManager;
+function mapStateToProps(state){
+    return {
+        tree : state.tree
+    };
+}
+
+// function mapDispatchToProps(dispatch){
+//     return bindActionCreators({addNewBook}, dispatch);
+
+// }
+
+export default connect(mapStateToProps)(FileManager);

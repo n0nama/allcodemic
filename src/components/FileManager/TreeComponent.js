@@ -30,12 +30,12 @@ const TreeAlg = {
 //     return arr.concat([{...data}]);
 // }
 
-function addChildCount(node) {
-    //const countstr = (hasChildren(node)) ? ` (${node.children.length})` : '';
-    return {
-      ...node
-    }
-  }
+// function addChildCount(node) {
+//     //const countstr = (hasChildren(node)) ? ` (${node.children.length})` : '';
+//     return {
+//       ...node
+//     }
+//   }
 
 class Tree extends Component {
     render(){
@@ -51,7 +51,7 @@ class Tree extends Component {
                             active={item.active ? item.active : false}
                             index={0}
                         >
-                            {item.type == 'folder' ? <Icon name='dropdown' /> : <Icon />}
+                            {item.type === 'folder' ? <Icon name='dropdown' /> : <Icon />}
                             <span>
                                 <Icon name={`${item.type} outline`} />{item.text}
                             </span>
@@ -73,26 +73,3 @@ class Tree extends Component {
 }
 
 export default Tree
-
-{/* <div id="tree">
-<div className="tree-item">
-    <div className="item-caret"><Icon name='angle right' size="small" /></div>
-    <div className="item-base"><Icon name='folder outline' />base</div>
-</div>
-<div className="tree-item">
-    <div className="item-caret"><Icon name='angle right' size="small" /></div>
-    <div className="item-base"><Icon name='folder outline' />parent</div>
-    <div className="tree-item">
-      <div className="item-caret"><Icon name='angle right' size="small" /></div>
-      <div className="item-base"><Icon name='folder outline' />child</div>
-      <div className="tree-item">
-          <div className="item-caret"><Icon name='angle right' size="small" /></div>
-          <div className="item-base"><Icon name='folder outline' />grand child</div>
-      </div>
-    </div>
-</div>
-<div className="tree-item">
-    <div className="item-caret"><Icon /></div>
-    <div className="item-base"><Icon name='file outline' />test.py</div>
-</div>
-</div> */}

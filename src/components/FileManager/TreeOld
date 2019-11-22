@@ -1,0 +1,22 @@
+{/* <div id="tree">
+<div className="tree-item">
+    <div className="item-caret"><Icon name='angle right' size="small" /></div>
+    <div className="item-base"><Icon name='folder outline' />base</div>
+</div>
+<div className="tree-item">
+    <div className="item-caret"><Icon name='angle right' size="small" /></div>
+    <div className="item-base"><Icon name='folder outline' />parent</div>
+    <div className="tree-item">
+      <div className="item-caret"><Icon name='angle right' size="small" /></div>
+      <div className="item-base"><Icon name='folder outline' />child</div>
+      <div className="tree-item">
+          <div className="item-caret"><Icon name='angle right' size="small" /></div>
+          <div className="item-base"><Icon name='folder outline' />grand child</div>
+      </div>
+    </div>
+</div>
+<div className="tree-item">
+    <div className="item-caret"><Icon /></div>
+    <div className="item-base"><Icon name='file outline' />test.py</div>
+</div>
+</div> */}
