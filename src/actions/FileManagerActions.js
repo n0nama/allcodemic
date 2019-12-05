@@ -1,12 +1,12 @@
-export const ADD_BOOK = 'ADD_BOOK';
+export const OPEN_HIDE_FOLDER = 'OPEN_HIDE_FOLDER';
 export const DELETE_BOOK = 'DELETE_BOOK';
 export const EDIT_BOOK = 'EDIT_BOOK';
 export const SORT_BOOKS = 'SORT_BOOKS'
 
-export function addNewBook(book) {
+export function openHideFolder(path) {
     const action = {
-        type: ADD_BOOK,
-        book
+        type: OPEN_HIDE_FOLDER,
+        path
     }
     return action;
 }

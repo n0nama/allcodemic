@@ -1,72 +1,96 @@
 [
     {
     "type": "folder",
-    "text": "base",
+    "name": "base",
     "active" : true,
+    "path" : "/workspace/base",
     "children": [
         {
             "type": "file",
-            "text": "test.py"
+            "name": "test.py",
+            "path" : "/workspace/base/test.py",
+            "content" : "/workspace/base/test.py"
         },
         {
             "type":     "folder",
-            "text":     "env",
+            "name":     "env",
             "active" : true,
+            "path" : "/workspace/base/env",
             "children": [
                 {
                     "type": "file",
-                    "text": "bin.bash"
+                    "name": "bin.bash",
+                    "path" : "/workspace/base/env/bin.bash",
+                    "content" : "/workspace/base/env/bin.bash"
                 },
                 {
                     "type": "file",
-                    "text": "python.script"
+                    "name": "python.script",
+                    "path" : "/workspace/base/env/python.script",
+                    "content" : "/workspace/base/env/python.script"
                 },
                 {
                     "type": "file",
-                    "text": "temp.log"
+                    "name": "temp.log",
+                    "path" : "/workspace/base/env/temp.log",
+                    "content" : "/workspace/base/env/temp.log"
                 }
             ]
         },
         {
             "type": "folder",
-            "text": "Poems",
+            "name": "Poems",
+            "path" : "/workspace/base/Poems",
             "active" : false
         },
         {
             "type": "folder",
-            "text": "Essays",
+            "name": "Essays",
             "active" : false,
+            "path" : "/workspace/base/Essays",
             "children": [
                 {
                     "type": "file",
-                    "text": "The Fantastic Imagination"
+                    "name": "The Fantastic Imagination",
+                    "path" : "/workspace/base/Essays/The Fantastic Imagination",
+                    "content" : "Essays/The Fantastic Imagination"
                 },
                 {
                     "type": "file",
-                    "text": "The New Name"
+                    "name": "The New Name",
+                    "path" : "/workspace/base/Essays/The New Name",
+                    "content" : "Essays/The New Name"
                 }
             ]
         },
         {
             "type": "file",
-            "text": "Our Community"
+            "name": "Our Community",
+            "path" : "/workspace/base/Our Community",
+            "content" : "base/Our Community"
         },
         {
             "type": "folder",
-            "text": "About us",
+            "name": "About us",
             "active" : false,
+            "path" : "/workspace/base/About us",
             "children": [
                 {
                     "type": "folder",
-                    "text": "Community sponsorship",
+                    "name": "Community sponsorship",
+                    "path" : "/workspace/base/About us/Community sponsorship",
                    "children": [
                         {
                             "type": "file",
-                            "text": "Our Patreon"
+                            "name": "Our Patreon",
+                            "path" : "/workspace/base/About us/Community sponsorship/Our Patreon",
+                            "content" : "Community sponsorship/Our Patreon"
                         },
                         {
                             "type": "file",
-                            "text": "Endowments"
+                            "name": "Endowments",
+                            "path" : "/workspace/base/About us/Community sponsorship/Endowments",
+                            "content" : "Community sponsorship/Endowments"
                         }
                     ]
                 }
@@ -76,6 +100,8 @@
 },
 {
     "type": "file",
-    "text": "Forum"
+    "name": "Forum",
+    "path" : "/workspace/Forum",
+    "content" : "/workspace/Forum"
 }
 ]

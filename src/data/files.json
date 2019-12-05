@@ -1,0 +1,20 @@
+[
+    {
+        "name" : "test.py",
+        "content" : "def tester():\n\tprint(\"Test\")",
+        "active" : true,
+        "path" : "/base/py/test.py"
+    },
+    {
+        "name" : "script.py",
+        "content" : "def scripter():\n\tprint(\"Test\")",
+        "active" : false,
+        "path" : "/base/py/script.py"
+    },
+    {
+        "name" : "func.py",
+        "content" : "def funcer():\n\tprint(\"Test\")",
+        "active" : false,
+        "path" : "/base/py/func.py"
+    }
+]

@@ -2,6 +2,11 @@ import React, { Component } from 'react'
 import { Accordion, Icon } from 'semantic-ui-react'
 import {curry} from 'ramda';
 
+// import { connect } from 'react-redux';
+// import { bindActionCreators } from 'redux';
+
+// import { openHideFolder } from '../../actions/FileManagerActions';
+
 function hasChildren(node) {
     return (typeof node === 'object')
         && (typeof node.children !== 'undefined')
@@ -38,33 +43,38 @@ const TreeAlg = {
 //   }
 
 class Tree extends Component {
+    fileDoubleClickHandler(file){
+        this.props.createOrOpenNewFile(file);
+    }
+    caretClickHandler(path){
+        this.props.openHideFolder(path);
+    }
     render(){
-        const data = this.props.data;
+        const data = this.props.tree;
         if (!data) return null;
-        //console.log(TreeAlg.map(addChildCount, menu));
         return(
-            <div id="tree">
+            <div className="tree">
                 {data.map((item) => {
                 return (
-                    <Accordion key={item.text}>
+                    <Accordion key={item.path}>
                         <Accordion.Title
-                            active={item.active ? item.active : false}
+                            active={item.active}
                             index={0}
+                            onDoubleClick={item.type === 'folder' ? () => this.caretClickHandler(item.path) : () => this.fileDoubleClickHandler(item)}
                         >
-                            {item.type === 'folder' ? <Icon name='dropdown' /> : <Icon />}
+                            {item.type === 'folder' ? <Icon name='dropdown' onClick={() => this.caretClickHandler(item.path)}/> : <Icon />}
                             <span>
-                                <Icon name={`${item.type} outline`} />{item.text}
+                                <Icon name={`${item.type}`} />{item.name}
                             </span>
                         </Accordion.Title>
-                        <Accordion.Content active={item.active ? item.active : false}>
-                            <Tree data={item.children} />
+                        <Accordion.Content active={item.active}>
+                            <Tree
+                                tree={item.children}
+                                openHideFolder={this.props.openHideFolder}
+                                createOrOpenNewFile={this.props.createOrOpenNewFile}
+                            />
                         </Accordion.Content>
                     </Accordion>
-                    // <div className="tree-item" >
-                    //     {item.type == 'folder' ? <div className="item-caret"><Icon name='angle right' size="small" /></div>:null}
-                    //     <div className="item-base"><Icon name={`${item.type} outline`} /></div>
-                        
-                    // </div>
                 )
                 })}
             </div>

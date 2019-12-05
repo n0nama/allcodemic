@@ -2,7 +2,10 @@ import React, { Component, Fragment } from 'react';
 import './FileManager.css';
 
 import { connect } from 'react-redux';
-//import { bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux';
+
+import { openHideFolder } from '../../actions/FileManagerActions';
+import { createOrOpenNewFile } from '../../actions/EditorActions';
 
 import Tree from './TreeComponent';
 import Editor from '../Editor/Editor';
@@ -32,13 +35,13 @@ class FileManager extends Component {
         }
     }
     render(){
-        console.log(this.props)
+        console.log("PROPS", this.props)
         return (
             <Fragment>
             <div id="FileManager"
                 style={{width : this.state.width.toString() + 'px'}}
                 onMouseMove={this.state.isDragging ? (e)=>this.onMouseMove(e) : null}>
-                <Tree data={this.props.tree}/>
+                <Tree tree={this.props.tree} openHideFolder={this.props.openHideFolder} createOrOpenNewFile={this.props.createOrOpenNewFile}/>
             </div>
             <div id="VerticalLine" style={{marginLeft : this.state.width.toString() + 'px'}} onMouseDown={(e) => this.startResize(e)} onMouseUp={(e) => this.stopResize(e)}></div>
             <div id="EditorWrapper" style={{left : (this.state.width + 2).toString() + 'px'}} onMouseMove={this.state.isDragging ? (e)=>this.onMouseMove(e) : null}>
@@ -55,9 +58,9 @@ function mapStateToProps(state){
     };
 }
 
-// function mapDispatchToProps(dispatch){
-//     return bindActionCreators({addNewBook}, dispatch);
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({openHideFolder, createOrOpenNewFile}, dispatch);
 
-// }
+}
 
-export default connect(mapStateToProps)(FileManager);
+export default connect(mapStateToProps, mapDispatchToProps)(FileManager);

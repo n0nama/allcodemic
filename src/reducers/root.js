@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 import tree from './FileManagerReducer';
-//import BookShelfReducer from './BookShelfReducer';
+import files from './EditorReducer';
 
 const rootReducer = combineReducers({
-    tree
+    tree, files
 })
 
 export default rootReducer;
