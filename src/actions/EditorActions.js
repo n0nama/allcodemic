@@ -1,6 +1,7 @@
 export const ACTIVE_FILE = 'ACTIVE_FILE';
 export const CLOSE_FILE = 'CLOSE_FILE';
 export const CREATE_OR_OPEN_NEW_FILE = 'CREATE_OR_OPEN_NEW_FILE';
+export const REORDER_TABS = 'REORDER_TABS';
 //export const SORT_BOOKS = 'SORT_BOOKS'
 
 export function activeFile(path) {
@@ -23,6 +24,14 @@ export function createOrOpenNewFile(file) {
     const action = {
         type: CREATE_OR_OPEN_NEW_FILE,
         file
+    }
+    return action;
+}
+
+export function reorderOpenedFiles(arr) {
+    const action = {
+        type: REORDER_TABS,
+        arr
     }
     return action;
 }

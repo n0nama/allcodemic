@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import { Accordion, Icon } from 'semantic-ui-react'
 import {curry} from 'ramda';
 
+import { ContextMenuTrigger } from "react-contextmenu";
+
+import RightClickMenu from './ContextMenu';
+
 // import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 
@@ -41,7 +45,6 @@ const TreeAlg = {
 //       ...node
 //     }
 //   }
-
 class Tree extends Component {
     fileDoubleClickHandler(file){
         this.props.createOrOpenNewFile(file);
@@ -49,18 +52,25 @@ class Tree extends Component {
     caretClickHandler(path){
         this.props.openHideFolder(path);
     }
+    rightClickMenu = (e,type) =>{
+        e.preventDefault();
+        this.setState({rightClickType: type})
+    }
     render(){
         const data = this.props.tree;
         if (!data) return null;
         return(
             <div className="tree">
+                
                 {data.map((item) => {
                 return (
-                    <Accordion key={item.path}>
+                    <ContextMenuTrigger key={item.path} id={item.type + "RightClickMenu"}>                 
+                    <Accordion>
                         <Accordion.Title
                             active={item.active}
                             index={0}
                             onDoubleClick={item.type === 'folder' ? () => this.caretClickHandler(item.path) : () => this.fileDoubleClickHandler(item)}
+                            onContextMenu={(e) => this.rightClickMenu(e,item.type)}
                         >
                             {item.type === 'folder' ? <Icon name='dropdown' onClick={() => this.caretClickHandler(item.path)}/> : <Icon />}
                             <span>
@@ -75,8 +85,10 @@ class Tree extends Component {
                             />
                         </Accordion.Content>
                     </Accordion>
+                    </ContextMenuTrigger>
                 )
                 })}
+                <RightClickMenu />                
             </div>
         )
     }

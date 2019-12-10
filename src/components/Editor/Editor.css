@@ -1,6 +1,6 @@
 #EditorTabs{
     position: absolute;
-    left: 0;
+    left: 30px;
     right: 0;
     top: 0;
     height: 20px;
@@ -70,6 +70,7 @@
 }
 
 #newFileButton {
+    display: inline;
     padding: 5px;
     margin-left: 2px;
     margin-right: 2px;

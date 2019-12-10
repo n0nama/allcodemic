@@ -35,7 +35,7 @@ class FileManager extends Component {
         }
     }
     render(){
-        console.log("PROPS", this.props)
+        //console.log("PROPS", this.props)
         return (
             <Fragment>
             <div id="FileManager"

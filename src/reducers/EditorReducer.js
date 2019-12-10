@@ -1,5 +1,5 @@
 import files_json from '../data/files.json';
-import { ACTIVE_FILE, CLOSE_FILE, CREATE_OR_OPEN_NEW_FILE } from '../actions/EditorActions';
+import { ACTIVE_FILE, CLOSE_FILE, CREATE_OR_OPEN_NEW_FILE, REORDER_TABS } from '../actions/EditorActions';
 
 let tempFileIndex = 1;
 
@@ -76,6 +76,9 @@ function files(state = files_json, action) {
                 };
                 return openState;
             }
+        case REORDER_TABS:
+            let reorderedState = [...action.arr]
+            return reorderedState;
         default:
             return state;
     }
