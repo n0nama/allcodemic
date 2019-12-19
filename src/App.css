@@ -1,7 +1,49 @@
-.App{
+#App {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+#FileManagerWrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-color: chocolate;
+  max-width: 600px;
+}
+
+#EditorWrapper{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: coral;
+}
+
+#TerminalWrapper{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: wheat;
+}
+
+#VerticalResizer{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: yellow;
+  float: right;
+  cursor:col-resize;
+}
+
+#HorizontalResizer{
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: 2px;
+  bottom: 0;
+  background-color: yellow;
+  cursor:row-resize;
 }

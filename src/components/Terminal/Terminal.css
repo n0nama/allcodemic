@@ -1,0 +1,7 @@
+#TerminalWrapper input:focus{
+    outline: 0;
+}
+
+.ReactBash div:first-child{
+    display: none;
+}

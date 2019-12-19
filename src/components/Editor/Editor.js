@@ -122,9 +122,7 @@ class Editor extends Component {
                     </Droppable>
                 </div>
                 </DragDropContext>
-                <div id="Editor"
-                    style={{bottom : (this.state.height + 2).toString() + 'px'}}
-                    onMouseMove={this.state.isDragging ? (e)=>this.onMouseMove(e) : null}>
+                <div id="Editor">
                         {this.props.files.map(f=>{
                             return (
                                 <div key={f.path + '1'} className={f.active ? "editorHider active" : "editorHider"}>
@@ -132,8 +130,6 @@ class Editor extends Component {
                                         mode="python"
                                         theme="monokai"
                                         fontSize={14}
-                                        height={this.state.originalHeight.toString() + 'px'}
-                                        width="100%"
                                         onChange={this.onChange}
                                         name="mainEditor"
                                         editorProps={{ $blockScrolling: true }}
@@ -142,16 +138,6 @@ class Editor extends Component {
                                 </div>
                             )
                         })}
-                </div>
-                <div id="HorizontalLine"
-                    style={{bottom : this.state.height.toString() + 'px'}}
-                    onMouseDown={(e) => this.startResize(e)}
-                    onMouseUp={(e) => this.stopResize(e)}>
-                </div>
-                <div id="TerminalWrapper"
-                    style={{height : this.state.height.toString() + 'px'}}
-                    onMouseMove={this.state.isDragging ? (e)=>this.onMouseMove(e) : null}
-                    onMouseUp={(e) => this.stopResize(e)}>
                 </div>
             </Fragment>
             
