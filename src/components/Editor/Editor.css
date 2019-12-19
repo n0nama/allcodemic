@@ -54,34 +54,6 @@
     height : 100%!important;
 }
 
-#HorizontalLine{
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background-color: #8e8e8c;
-    cursor: row-resize;
-    flex-shrink: 0;
-  -webkit-user-select: none;  /* Chrome all / Safari all */
-  -moz-user-select: none;     /* Firefox all */
-  -ms-user-select: none;      /* IE 10+ */
-  user-select: none;          /* Likely future */
-}
-
-#TerminalWrapper{
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: darkslategrey;
-}
-
-#TerminalTabs{
-    width: 100%;
-    height:20px;
-    background-color: floralwhite;
-}
-
 #Editor .editorHider{
     display: none;
 }
