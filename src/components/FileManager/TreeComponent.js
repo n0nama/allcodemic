@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Accordion, Icon } from 'semantic-ui-react'
 import {curry} from 'ramda';
 
+
 import { ContextMenuTrigger } from "react-contextmenu";
 
 import RightClickMenu from './ContextMenu';
@@ -49,8 +50,9 @@ class Tree extends Component {
     fileDoubleClickHandler(file){
         this.props.createOrOpenNewFile(file);
     }
-    caretClickHandler(path){
+    caretClickHandler(e, path){
         this.props.openHideFolder(path);
+        e.stopPropagation();
     }
     rightClickMenu = (e,type) =>{
         e.preventDefault();
@@ -62,29 +64,30 @@ class Tree extends Component {
         return(
             <div className="tree">
                 
-                {data.map((item) => {
+                {data.map((item, index) => {
                 return (
-                    <ContextMenuTrigger key={item.path} id={item.type + "RightClickMenu"}>                 
-                    <Accordion>
-                        <Accordion.Title
-                            active={item.active}
-                            index={0}
-                            onDoubleClick={item.type === 'folder' ? () => this.caretClickHandler(item.path) : () => this.fileDoubleClickHandler(item)}
-                            onContextMenu={(e) => this.rightClickMenu(e,item.type)}
-                        >
-                            {item.type === 'folder' ? <Icon name='dropdown' onClick={() => this.caretClickHandler(item.path)}/> : <Icon />}
-                            <span>
-                                <Icon name={`${item.type}`} />{item.name}
-                            </span>
-                        </Accordion.Title>
-                        <Accordion.Content active={item.active}>
-                            <Tree
-                                tree={item.children}
-                                openHideFolder={this.props.openHideFolder}
-                                createOrOpenNewFile={this.props.createOrOpenNewFile}
-                            />
-                        </Accordion.Content>
-                    </Accordion>
+                    <ContextMenuTrigger key={item.path} id={item.type + "RightClickMenu"}>               
+                            <Accordion>
+                                <Accordion.Title
+                                    active={item.active}
+                                    onDoubleClick={item.type === 'folder' ? (e, path) => this.caretClickHandler(e, item.path) : () => this.fileDoubleClickHandler(item)}
+                                    onContextMenu={(e) => this.rightClickMenu(e,item.type)}
+                                >
+                                    {item.type === 'folder' ? <Icon name='dropdown' onClick={(e,path) => this.caretClickHandler(e,item.path)}/> : <Icon />}
+                                    <span>
+                                        <Icon name={`${item.type}`} />{item.name}
+                                    </span>
+                                </Accordion.Title>
+                                <Accordion.Content
+                                    active={item.active}
+                                >
+                                    <Tree
+                                        tree={item.children}
+                                        openHideFolder={this.props.openHideFolder}
+                                        createOrOpenNewFile={this.props.createOrOpenNewFile}
+                                    />
+                                </Accordion.Content>
+                            </Accordion>
                     </ContextMenuTrigger>
                 )
                 })}

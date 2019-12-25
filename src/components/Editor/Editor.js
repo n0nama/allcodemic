@@ -6,7 +6,7 @@ import './Editor.css'
 import AceEditor from "react-ace";
 
 import "ace-builds/src-noconflict/mode-python";
-import "ace-builds/src-noconflict/theme-monokai";
+import "ace-builds/src-noconflict/theme-tomorrow_night_eighties";
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -15,18 +15,7 @@ import { activeFile, closeFile, createOrOpenNewFile, reorderOpenedFiles } from '
 
 class Editor extends Component {
     state = {
-        minHeight : 100,
-        maxHeight : 600,
-        height : 300,
-        isDragging : false,
-        originalHeight : window.innerHeight - 322,
         content : ""
-    }
-    startResize(e) {
-        this.setState({ isDragging: true});
-    }
-    stopResize(e) {
-        this.setState({ isDragging: false});
     }
     onMouseMove(e) {
         //console.log(this.state);
@@ -128,12 +117,13 @@ class Editor extends Component {
                                 <div key={f.path + '1'} className={f.active ? "editorHider active" : "editorHider"}>
                                     <AceEditor
                                         mode="python"
-                                        theme="monokai"
+                                        theme="tomorrow_night_eighties"
                                         fontSize={14}
                                         onChange={this.onChange}
                                         name="mainEditor"
                                         editorProps={{ $blockScrolling: true }}
                                         value={f.content}
+                                        height="100%"
                                     />
                                 </div>
                             )

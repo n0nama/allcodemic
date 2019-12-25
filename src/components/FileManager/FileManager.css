@@ -1,8 +1,8 @@
 #FileManager{
     position: relative;
     width: 100%;
-    height: 100%;
-    background-color: #e5e5e5;
+    /* height: 100%; */
+    background-color: #272727;
     float: left;
     clear: both;
     padding-left: 15px;
@@ -13,6 +13,10 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+#FMN{
+  color: #d0d0d0;
 }
 
 .item-caret, .item-base {
@@ -31,8 +35,16 @@
 }
 #FileManager .tree .accordion .content, #FileManager .tree .accordion .title{
   padding: 0;
-  color: #4d4d4d;
+  color: #d0d0d0;
 }
 #FileManager .tree .accordion .accordion, #FileManager .tree .accordion .dropdown{
   margin: 0;
+}
+
+#FileManager .folder{
+  color: #6e6e6e;
+}
+
+#FileManager .file{
+  color: #c06939;
 }

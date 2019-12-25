@@ -1,32 +1,41 @@
-import React, { PureComponent } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Resizable } from 're-resizable';
 import './App.css';
 
 import { Provider } from 'react-redux';
 import { createStore } from "redux";
 
+import FMNew from './components/FileManager/FMNew';
+
 import FileManager from './components/FileManager/FileManager';
-import TerminalWindow from './components/Terminal/Terminal';
+import Terminal from './components/Terminal/Terminal';
 import Editor from './components/Editor/Editor';
 import rootReducer from './reducers/root';
 
 const store = createStore(rootReducer);
 
-class App extends PureComponent {
+const history = [{ value: 'Welcome to the terminal!' }]
+
+class App extends Component {
   render(){
     return (
+      <Fragment>
       <Provider store={store}>
       <div id="App">
         <Resizable
           id="FileManagerWrapper"
+          enable={{top:false, right:true, left:false, bottom:false}}
           defaultSize={{
-            width: 300,
+            width: 250,
             height: '100%',
           }}
           maxWidth="600"
           minWidth="100"
         >
           <FileManager></FileManager>
+          <div id="FMN">
+            <FMNew></FMNew>
+          </div>
         </Resizable>
         <div id="RightHalf">
           <Resizable
@@ -38,15 +47,18 @@ class App extends PureComponent {
             }}
             maxHeight={(window.innerHeight-100).toString()}
             minHeight="300"
+            bounds='parent'
+            onResizeStop={this.EditorResize}
           >
             <Editor></Editor>
           </Resizable>
           <div id="TerminalWrapper">
-            <TerminalWindow></TerminalWindow>
+            <Terminal history={history}></Terminal>
           </div>
         </div>
       </div>
       </Provider>
+      </Fragment>
     )
   }
 }

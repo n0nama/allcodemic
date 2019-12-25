@@ -13,7 +13,7 @@ class FileManager extends Component {
     render(){
         return (
             <div id="FileManager">
-                <Tree tree={this.props.tree} openHideFolder={this.props.openHideFolder} createOrOpenNewFile={this.props.createOrOpenNewFile}/>
+                <Tree tree={this.props.mtree} openHideFolder={this.props.openHideFolder} createOrOpenNewFile={this.props.createOrOpenNewFile}/>
             </div>
         )
     }
@@ -21,7 +21,7 @@ class FileManager extends Component {
 
 function mapStateToProps(state){
     return {
-        tree : state.tree
+        mtree : state.tree
     };
 }
 

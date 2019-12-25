@@ -1,3 +1,45 @@
 #TerminalWrapper input:focus{
     outline: 0;
 }
+
+#ReactBash {
+    position:relative;
+    width:100%;
+    height:100%;
+    font-size: 13px;
+    font-weight: 400;
+    text-align: left;
+    border-top: 1px solid #515151;
+}
+
+.TerminalBody{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    overflow: auto;
+    padding: 10px;
+    background-color: #272727;
+    color: #d0d0d0;
+}
+
+.prefix{
+    margin-right: 5px;
+    color: #F99157;
+};
+
+.TerminalForm{
+    display: flex;
+}
+
+.TerminalForm input{
+    background: none;
+    border: none;
+    color: inherit;
+    flex-grow: 1;
+    font-family: inherit;
+    font-size: inherit;
+    outline: none!important;
+    padding: 0;
+}
