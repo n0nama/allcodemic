@@ -66,7 +66,6 @@ class Editor extends Component {
         console.log("change", newValue);
     }
     render(){
-        console.log(this.props)
         return (
             <Fragment>
                 <Button id="newFileButton" inverted basic size='mini'  onClick={()=>this.createNewFile()}>

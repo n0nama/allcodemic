@@ -229,7 +229,6 @@ export default class Tree extends Component {
   setItemRef = (itemId, el) => {
     if (el) {
       itemsElement[itemId] = el;
-      console.log(itemsElement)
     }
   };
 
@@ -260,6 +259,7 @@ export default class Tree extends Component {
     if (snapshot.isDropAnimating) {
       this.onDropAnimating();
     }
+    //console.log("State",this.state)
     return (
       <TreeItem
         key={flatItem.item.id}

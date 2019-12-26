@@ -19,7 +19,6 @@ import { getParentPath, getIndexAmongSiblings } from './path';
           (accum, itemId, index) => {
             // iterating through all the children on the given level
             const item = tree.items[itemId];
-            console.log(path)
             const currentPath = [...path, index];
             // we create a flattened item for the current item
             const currentItem = createFlattenedItem(item, currentPath);

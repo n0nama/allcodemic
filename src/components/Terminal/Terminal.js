@@ -33,7 +33,7 @@ export default class Terminal extends Component {
         this.refs.input.focus();
     }
 
-    componentWillReceiveProps({ extensions, structure, history }) {
+    UNSAFE_componentWillReceiveProps({ extensions, structure, history }) {
         const updatedState = {};
         if (structure) {
             updatedState.structure = Object.assign({}, structure);
