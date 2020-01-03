@@ -4,8 +4,10 @@ import Tree from './Tree/Tree';
 import { mutateTree, moveItemOnTree } from './Tree/utils/tree';
 import { Icon } from 'semantic-ui-react';
 
-//import tree_json from '../../data/tree.json';
+import tree_json from '../../data/curr_tree.json';
 import {curry} from 'ramda';
+
+console.log(tree_json[0])
 
 const tree = {rootId : 0, children :[{
   type: "folder",
@@ -168,7 +170,7 @@ const tree = {rootId : 0, children :[{
 ]
 };
 
-function hasChildren(node) {
+function hasChilds(node) {
   return (typeof node === 'object')
       && (typeof node.children !== 'undefined')
       && (node.children.length > 0);
@@ -177,14 +179,14 @@ function hasChildren(node) {
 const TreeAlg = {
   reduce: curry(function reduce(reducerFn, init, node) {
       const acc = reducerFn(init, node);
-      if (!hasChildren(node)) {
+      if (!hasChilds(node)) {
           return acc;
       }   
       return node.children.reduce(TreeAlg.reduce(reducerFn), acc);
   }),
   map: curry(function map(mapFn, node) {
       const newNode = mapFn(node);
-      if (hasChildren(node)) {
+      if (hasChilds(node)) {
           return newNode;
       }
       newNode.children = node.children.map(TreeAlg.map(mapFn));
@@ -198,6 +200,16 @@ function flattenToArray(arr, node) {
   let {children, ...data} = node
   return arr.concat([{...data, children : childs}]);
 }
+
+function flattenToArrayN(arr, node) {
+  //return arr.id = {...data}
+let childs = node.children ? node.children.map(el=>el.name):[];
+let hasChildren = node.children ? true : false;
+let {children, ...data} = node
+let id = node.name
+//let name = node.name.split('/')[-1]
+return arr.concat([{...data, children : childs, hasChildren, id}]);
+}
 const flattenedCurrentStruct=TreeAlg.reduce(flattenToArray, [], tree);
 const convertArrayToObject = (array, key) =>
   array.reduce(
@@ -209,7 +221,11 @@ const convertArrayToObject = (array, key) =>
   );
 const preparedItems = convertArrayToObject(flattenedCurrentStruct.slice(1), "id")
 const newStruct = {rootId : '/workspace', items : preparedItems}
-console.log(newStruct);
+
+const newStructFlat = TreeAlg.reduce(flattenToArrayN, [], tree_json[0]);
+const prepNewStructFlat = convertArrayToObject(newStructFlat, "name");
+const finalStruct = {rootId : '.', items : prepNewStructFlat}
+console.log("NEW_STRUCT", finalStruct);
 
 const complexTree = {
   rootId: '1',
@@ -258,7 +274,7 @@ const getIcon = (item,onExpand,onCollapse) => {
 
 export default class FMNew extends Component {
   state = {
-    tree: newStruct,
+    tree: finalStruct,
   };
 
   // static getIcon(item,onExpand,onCollapse) {
