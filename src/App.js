@@ -5,8 +5,6 @@ import './App.css';
 import { Provider } from 'react-redux';
 import { createStore } from "redux";
 
-import FMNew from './components/FileManager/FMNew';
-
 import FileManager from './components/FileManager/FileManager';
 import Terminal from './components/Terminal/Terminal';
 import Editor from './components/Editor/Editor';
@@ -33,9 +31,6 @@ class App extends Component {
           minWidth="100"
         >
           <FileManager></FileManager>
-          <div id="FMN">
-            <FMNew></FMNew>
-          </div>
         </Resizable>
         <div id="RightHalf">
           <Resizable

@@ -1,18 +1,18 @@
 [
-  {"type":"directory","name":".","children":[
-    {"type":"directory","name":"./actions","children":[
+  {"type":"directory","name":".","contents":[
+    {"type":"directory","name":"./actions","contents":[
       {"type":"file","name":"./actions/EditorActions.js"},
       {"type":"file","name":"./actions/FileManagerActions.js"}
     ]},
-    {"type":"directory","name":"./components","children":[
-      {"type":"directory","name":"./components/Editor","children":[
+    {"type":"directory","name":"./components","contents":[
+      {"type":"directory","name":"./components/Editor","contents":[
         {"type":"file","name":"./components/Editor/Editor.css"},
         {"type":"file","name":"./components/Editor/Editor.js"},
         {"type":"file","name":"./components/Editor/windowDimensions.js"}
       ]},
-      {"type":"directory","name":"./components/FileManager","children":[
-        {"type":"directory","name":"./components/FileManager/Tree","children":[
-          {"type":"directory","name":"./components/FileManager/Tree/utils","children":[
+      {"type":"directory","name":"./components/FileManager","contents":[
+        {"type":"directory","name":"./components/FileManager/Tree","contents":[
+          {"type":"directory","name":"./components/FileManager/Tree/utils","contents":[
             {"type":"file","name":"./components/FileManager/Tree/utils/delayed-function.js"},
             {"type":"file","name":"./components/FileManager/Tree/utils/flat-tree.js"},
             {"type":"file","name":"./components/FileManager/Tree/utils/handy.js"},
@@ -30,7 +30,7 @@
         {"type":"file","name":"./components/FileManager/FileManager.js"},
         {"type":"file","name":"./components/FileManager/TreeComponent.js"}
       ]},
-      {"type":"directory","name":"./components/Terminal","children":[
+      {"type":"directory","name":"./components/Terminal","contents":[
         {"type":"file","name":"./components/Terminal/Terminal.css"},
         {"type":"file","name":"./components/Terminal/Terminal.js"},
         {"type":"file","name":"./components/Terminal/Terminal___.js"},
@@ -42,12 +42,12 @@
         {"type":"file","name":"./components/Terminal/util.js"}
       ]}
     ]},
-    {"type":"directory","name":"./data","children":[
+    {"type":"directory","name":"./data","contents":[
       {"type":"file","name":"./data/curr_tree.json"},
       {"type":"file","name":"./data/files.json"},
       {"type":"file","name":"./data/tree.json"}
     ]},
-    {"type":"directory","name":"./reducers","children":[
+    {"type":"directory","name":"./reducers","contents":[
       {"type":"file","name":"./reducers/EditorReducer.js"},
       {"type":"file","name":"./reducers/FileManagerReducer.js"},
       {"type":"file","name":"./reducers/root.js"}
