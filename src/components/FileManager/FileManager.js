@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './FileManager.css';
 
 import { connect } from 'react-redux';
@@ -12,13 +12,19 @@ import { Icon } from 'semantic-ui-react';
 const getIcon = (item,onExpand,onCollapse) => {
   if (item.children && item.children.length > 0) {
     return item.isExpanded ? (
-        <Icon name="chevron down" size="small" onClick={() => onCollapse(item.id)}/>
+        <Fragment>
+          <Icon name="chevron down" size="small" onClick={() => onCollapse(item.id)}/>
+          <Icon name="folder"/>
+        </Fragment>
     ) : (
-        <Icon name="chevron right" size="small" onClick={() => onExpand(item.id)}/>
+        <Fragment>
+          <Icon name="chevron right" size="small" onClick={() => onExpand(item.id)}/>
+          <Icon name="folder"/>
+        </Fragment>
     )
     
   }
-  return <Icon name="file"></Icon>;
+  return <Icon name="file"/>;
 };
 
 class FileManager extends Component {
@@ -67,7 +73,6 @@ class FileManager extends Component {
 
   render() {
     const { tree } = this.state;
-    console.log(this.state)
     return (
         <div id="FileManager">
           <Tree

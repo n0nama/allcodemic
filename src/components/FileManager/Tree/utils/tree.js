@@ -1,14 +1,4 @@
 import { getParentPath, getIndexAmongSiblings } from './path';
-  
-//   export type TreeItemMutation = {
-//     id?: ItemId;
-//     children?: ItemId[];
-//     hasChildren?: boolean;
-//     isExpanded?: boolean;
-//     isChildrenLoading?: boolean;
-//     data?: TreeItemData;
-//   };
-  
   /*
     Transforms tree structure into flat list of items for rendering purposes.
     We recursively go through all the elements and its children first on each level

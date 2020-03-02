@@ -47,7 +47,7 @@ export default class Tree extends Component {
 //   // HTMLElement of the container element
 //   containerElement: HTMLElement | undefined;
 
-  expandTimer = new DelayedFunction(500);
+  expandTimer = new DelayedFunction(300);
 
   static getDerivedStateFromProps(props, state) {
     const { draggedItemId } = state;
@@ -73,6 +73,10 @@ export default class Tree extends Component {
 
   onDragStart = (result) => {
     const { onDragStart } = this.props;
+    const item = getItemById(
+      this.state.flattenedTree,
+      result.draggableId,
+    );
     this.dragState = {
       source: result.source,
       destination: result.source,
@@ -80,6 +84,7 @@ export default class Tree extends Component {
     };
     this.setState({
       draggedItemId: result.draggableId,
+      type:item.item.type
     });
     if (onDragStart) {
       onDragStart(result.draggableId);
@@ -87,6 +92,7 @@ export default class Tree extends Component {
   };
 
   onDragUpdate = (update) => {
+    console.log("Update", update)
     const { onExpand } = this.props;
     const { flattenedTree } = this.state;
     if (!this.dragState) {
@@ -102,12 +108,12 @@ export default class Tree extends Component {
       );
       if (item && this.isExpandable(item)) {
         this.expandTimer.start(() => onExpand(draggableId, item.path));
-      }
+      };
     }
     this.dragState = {
       ...this.dragState,
       destination: update.destination,
-      combine: update.combine,
+      combine:  update.combine
     };
   };
 
@@ -259,11 +265,11 @@ export default class Tree extends Component {
     if (snapshot.isDropAnimating) {
       this.onDropAnimating();
     }
-    //console.log("State",this.state)
     return (
       <TreeItem
         key={flatItem.item.id}
         item={flatItem.item}
+        type={flatItem.item.type}
         path={currentPath}
         onExpand={onExpand}
         onCollapse={onCollapse}
@@ -272,6 +278,7 @@ export default class Tree extends Component {
         snapshot={snapshot}
         itemRef={this.setItemRef}
         offsetPerLevel={offsetPerLevel}
+        style={snapshot.isDraggingOver ? { border: '1px solid white' } : null}
       />
     );
   };
@@ -279,7 +286,6 @@ export default class Tree extends Component {
   render() {
     const { isNestingEnabled } = this.props;
     const renderedItems = this.renderItems();
-
     return (
       <DragDropContext
         onDragStart={this.onDragStart}
@@ -288,22 +294,22 @@ export default class Tree extends Component {
       >
         <Droppable
           droppableId="tree"
-          isCombineEnabled={isNestingEnabled}
+          isCombineEnabled={this.state.type !== "file"}
           ignoreContainerClipping
         >
-          {(provided) => {
+          {(provided, snapshot) => {
             const finalProvided = this.patchDroppableProvided(
               provided,
             );
             return (
               <div
                 ref={finalProvided.innerRef}
-                style={{ pointerEvents: 'auto' }}
                 onTouchMove={this.onPointerMove}
                 onMouseMove={this.onPointerMove}
                 {...finalProvided.droppableProps}
               >
                 {renderedItems}
+                {finalProvided.placeholder}
               </div>
             );
           }}

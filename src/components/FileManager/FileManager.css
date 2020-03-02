@@ -14,37 +14,21 @@
     -ms-user-select: none;
     user-select: none;
 }
-
-#FMN{
+#FileManager .item{
+  padding: 10px;
   color: #d0d0d0;
+  cursor: default;
 }
-
-.item-caret, .item-base {
-  display: inline-block;
+#FileManager .chevron{
+  cursor: pointer;
 }
-
-.item-caret i {
-  margin: 0!important;
-}
-
-#FileManager .tree-item .tree-item{
-  margin-left: 15px;
-}
-#FileManager .tree .accordion .content{
-  margin-left: 15px;
-}
-#FileManager .tree .accordion .content, #FileManager .tree .accordion .title{
-  padding: 0;
-  color: #d0d0d0;
-}
-#FileManager .tree .accordion .accordion, #FileManager .tree .accordion .dropdown{
-  margin: 0;
-}
-
-#FileManager .folder{
+#FileManager .icon.folder{
   color: #6e6e6e;
 }
-
-#FileManager .file{
+#FileManager .icon.file{
   color: #c06939;
 }
+#FileManager .item.file{
+  margin-left: 15px;
+}
+
